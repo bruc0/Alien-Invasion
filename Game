@@ -1,0 +1,633 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using static System.Console;
+
+namespace Alien_Invasion
+     {
+
+    /*
+     *I made this game for my final middel school proget 
+     * the code isen't so clean I hope you can still work on it 
+     * I don't transleate the story in Enligsh for the moment
+     *yuo can do all you whant whit this code expet copy and say it's yours
+    */
+
+    class Game
+    {
+        string playername = "Franco";
+        int genderchoise = 0;
+        string[] pronomi = { "l*","lei", "lui" };
+        string[] finalLetter = { "*","a", "o" };
+        public void Start()
+        {
+            Console.Write("\a");
+            Title = "Alien Invasion";
+            RunMainMenu();
+        }
+        private void gender()
+        {
+        Clear();
+        string draw = @"";
+        string prompt = $"Sei";
+        string[] options = { "Maschio", "Femmina ", "Non binario" };
+        menu SecondChoiseMenu = new menu(prompt, options, draw);
+        int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    genderchoise = 2;
+                    break;
+                case 1:
+                    genderchoise = 1;
+                    break;
+                case 2:
+                    genderchoise = 0;
+                    break;
+            }
+            RunMainMenu();
+        }
+
+        private void RunMainMenu()
+        {
+            string draw = @$"
+
+            
+ ▄▄▄       ██▓     ██▓▓█████  ███▄    █     ██▓ ███▄    █ ██▒   █▓ ▄▄▄        ██████  ██▓ ▒█████   ███▄    █ 
+▒████▄    ▓██▒    ▓██▒▓█   ▀  ██ ▀█   █    ▓██▒ ██ ▀█   █▓██░   █▒▒████▄    ▒██    ▒ ▓██▒▒██▒  ██▒ ██ ▀█   █ 
+▒██  ▀█▄  ▒██░    ▒██▒▒███   ▓██  ▀█ ██▒   ▒██▒▓██  ▀█ ██▒▓██  █▒░▒██  ▀█▄  ░ ▓██▄   ▒██▒▒██░  ██▒▓██  ▀█ ██▒
+░██▄▄▄▄██ ▒██░    ░██░▒▓█  ▄ ▓██▒  ▐▌██▒   ░██░▓██▒  ▐▌██▒ ▒██ █░░░██▄▄▄▄██   ▒   ██▒░██░▒██   ██░▓██▒  ▐▌██▒
+ ▓█   ▓██▒░██████▒░██░░▒████▒▒██░   ▓██░   ░██░▒██░   ▓██░  ▒▀█░   ▓█   ▓██▒▒██████▒▒░██░░ ████▓▒░▒██░   ▓██░
+ ▒▒   ▓▒█░░ ▒░▓  ░░▓  ░░ ▒░ ░░ ▒░   ▒ ▒    ░▓  ░ ▒░   ▒ ▒   ░ ▐░   ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░░▓  ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ 
+  ▒   ▒▒ ░░ ░ ▒  ░ ▒ ░ ░ ░  ░░ ░░   ░ ▒░    ▒ ░░ ░░   ░ ▒░  ░ ░░    ▒   ▒▒ ░░ ░▒  ░ ░ ▒ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░
+  ░   ▒     ░ ░    ▒ ░   ░      ░   ░ ░     ▒ ░   ░   ░ ░     ░░    ░   ▒   ░  ░  ░   ▒ ░░ ░ ░ ▒     ░   ░ ░ 
+      ░  ░    ░  ░ ░     ░  ░         ░     ░           ░      ░        ░  ░      ░   ░      ░ ░           ░ 
+";
+
+            string prompt = $"Benvenut{finalLetter[genderchoise]} {playername} in Alien Invasion usa le freccette direzionali per muoverti nelle scelte.\n premi ENTER per selezionare la scelta  passa dalle impostazioni per personalizzare alcune opzioni";
+
+            string[] options = { "Giocare", "A proposito", "Opzioni", "Uscire" };
+            menu mainMenu = new menu(prompt, options, draw);
+            int selectedIndex = mainMenu.Run();
+
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    Giocare();
+                    break;
+                case 1:
+                    A_proposito();
+                    break;
+                case 2:
+                    Option();
+                    break;
+                case 3:
+                    Uscire();
+                    break;
+            }
+        }
+
+
+        private void Giocare()
+        {
+            Clear();
+            string draw = @"       
+  
+                                             ";
+            string prompt = $" Accomodati pure {playername} sono il curatore colui che ti narrerà la storia in base alle tue decisioni, prima di tutto ti dò un pò di contesto il nostro protagonista a cui darò il tuo nome osserva in diretta tv lo sbarco degli alieni nel deserto del nevada (dove se no?) e nota che gli alieni sono ";
+            string[] options = { "simili agli uomini", "Completamente diversi", "Senza forma solo pura energia"};
+            menu optionsMenu = new menu(prompt, options, draw);
+            int selectedIndex = optionsMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Like_us();
+                    break;
+                case 1:
+                    NotLikeUsForNothing();
+                    break;
+                case 2:
+                    PureEnergi();
+                    break;
+            }
+
+        }
+        private void A_proposito()
+        {
+            Clear();
+            Console.WriteLine(@"   
+                                                                   
+                                                                                                                               ________                 
+                                                                                                                              /  _____/                 
+                                                                                                                             /   \  ___                 
+                                                                                                                             \    \_\  \                
+                                                                                                                              \______  /                
+                                                                                                                                     \/                 
+                                      
+                                      
+                                                                           
+                                                                                                                                                      ____   ____
+                                                                                                                                                      \   \ /   /
+                                                                                                                                                       \   Y   / 
+                                                                                                                                                        \     /  
+                                                                                                                                                         \___/   
+                                      
+         
+                                                                                                                       Questo gioco è stato creato da Valena Gianluca 
+                                                              
+                                                                                                                          premere qualsiasi tasto per uscire");
+            ReadKey(true);
+            RunMainMenu();
+        }
+        private void Option()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Cosa vuoi fare {playername}";
+            string[] options = { "Cambiare nickname", "Selezionare il proprio gender","tornare in dietro" };
+            menu optionsMenu = new menu(prompt, options, draw);
+            int selectedIndex = optionsMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Clear();
+                    Console.WriteLine("Inserirere il nuovo nickname");
+                    playername = Console.ReadLine();
+                    RunMainMenu();
+                    break;
+                case 1:
+                    gender();
+                    break;
+                case 2:
+                    RunMainMenu();
+                    break;
+            }
+            ReadKey(true);
+            RunMainMenu();
+        }
+        private void Uscire()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = "  Vuoi veramente uscire?";
+            string[] options = { "si", "no" };
+            menu exitMenu = new menu(prompt, options, draw);
+            int selectedIndex = exitMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+
+            }
+
+        }
+        private void Like_us()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Incredibile questi alieni sono tali solo per nome. Militari e giornalisti sono scioccati capelli, unghie, occhi tutto era uguale a noi . {playername} rimane pralizzato gli manca il fiato e pensa che lui o i suoi amici potrebbero essere alieni ma tali dubbi esistenziali vengono messi da parte alla vista della loro la loro attrezzatura tecnologicamente";
+            string[] options = { "Primitiva", "Avanzata"};
+            menu SecondChoiseMenu0 = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu0.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Primitive0();
+                    break;
+                case 1:
+                    Haed0();
+                    break;
+            }
+        }
+        private void NotLikeUsForNothing()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"GLi alieni si mostrano al pubblico e sono esseri quadrupedi squamosi con una coda fucsia erano inquietanti a magnifici allo stesso tempo ma l’attenzione si spostò sulla loro attrezzatura tecnologicamente ";
+            string[] options = { "Primitiva", "Avanzata" };
+            menu SecondChoiseMenu1 = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu1.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Primitive1();
+                    break;
+                case 1:
+                    Haed1();
+                    break;
+            }
+        }
+        private void PureEnergi()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Strabiliante, gli alieni sono semplice e pura energia la tv di {playername} e di tutti coloro che stavano assistendo alla diretta tv sembrava rotta dato che non riusciva a catturare bene la magnificenza di quella energia celestiali. Poco Prima che le tv andassero in palla {playername} è riuscito a notare che l'attrezzatura degli alieni era tecnologicamente";
+            string[] options = { "Primitiva", "Avanzata",  };
+            menu SecondChoiseMenu2 = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu2.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Primitive2();
+                    break;
+                case 1:
+                    Haed2();
+                    break;
+            }
+
+        }
+        private void Primitive0()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"La loro attrezzatura è ridicola avevano una sorta di moschetto e delle radici. sono arrivati con un mezzo che hanno detto essere caduto dal cielo. Saranno venuti per";
+            string[] options = { "Il dominio", "La richiesta di aiuto", };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    End0();
+                    break;
+                case 1:
+                     End1();
+                    break;
+                case 2:
+                    Giocare();
+                    break;
+            }
+
+
+
+
+        }
+        private void Primitive1()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Il trabiccolo col quale erano arrivati era un miracolo non si fosse distrutto a contatto con l’atmosfera le loro armi erano i loro stessi artigli. Saranno venuti per";
+            string[] options = { "Il dominio", "La richiesta d'aiuto", };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    End2();
+                    break;
+                case 1:
+                    End3();
+                    break;
+            }
+
+
+        }
+        private void Primitive2()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Non avevano attrezzatura, semplicemente loro erano la loro stessa attrezzatura. Saranno venuti per";
+            string[] options = { "Il dominio", "La richiesta d'aiuto" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    End4();
+                    break;
+                case 1:
+                    End5();
+                    break;
+            }
+
+
+        }
+        private void Haed0()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Il loro gingilli tecnologici hanno fatto immediatamente impallidire i migliori scienziati globali, la loro navicella era alimentata con l’elettricita degli impulsi elettrici del corpo quindi se dentro quella navicella il tuo cuore batteva la stava caricando. Gli scienziati. Come armamento avevano un fucile a energia che chiamavano railgun. Saranno venuti per ";
+            string[] options = { "Il dominio ", "La richiesta d'aiuto"};
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    End6();
+                    break;
+                case 1:
+                    End7();
+                    break;
+            }
+
+        }
+        private void Haed1()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Per la loro postura quadrupede gli alieni  hanno dovuto inventare dispositiva adatti a loro ma non erano di certo da meno rispetto ai nostri anzi erano superiori. Saranno venuti per";
+            string[] options = { "Il dominio", "la richiesta d'aiuto" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    End8();
+                    break;
+                case 1:
+                    End9();
+                    break;
+            }
+
+
+        }
+        private void Haed2()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"I loro macchinari non erano fisici ma astratti non si vedevano ma si percepivano chiaramente. Saranno venuti per";
+            string[] options = { "Il dominio", "la richiesta d'aiuto" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    End10();
+                    break;
+                case 1:
+                    End11();
+                    break;
+            }
+
+
+        }
+        private void End0()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Dopo pochi mesi dallo sbarco {playername}  sentì al tg un giornalista giornalista enunciare queste <<Dopo mesi di ardui conflitti abbiamo ufficialmente perso la guerra, ho no stanno entrando in studio  ci..  ahhh crrrrrr tu uamno nmoe è {playername} tu gdaranue noi stlacoa lonismua? noi vrine prednere te. {playername} si spaventa a morte sanno il suo nome e stavano per arrivare a casa su.>> In quel momento di panico decise di fare l’unica cosa per {pronomi[genderchoise]} fattibile per sopravvivere  ossia farsi ammaestrare dagli alieni, si mise la pettorina del cane e diventò il loro animaletto domestico tutti gli altri umani perirono";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Primitive0();
+                    break;
+            }
+
+
+        }
+        private void End1()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni sono venuti alla ricerca d’aiuto erano disperati un meteorite stava per distruggere il loro piante, Immediatamente si tenne un convegno internazionale per decidere della sorte degli alieni e dopo sette giorni si giunse alla conclusione che i terrestri avrebbero ospitato i migranti. Belle parole troppo belle per essere vere {playername} come tutti i cittadini possedenti una casa fù chiamat{finalLetter[genderchoise]} ad accogliere una famiglia di alieni, stavano imparando l’inglese dato che era uno dei parametri per essere ammessi sulla Terra. Per {playername} non è stato un problema dato che un po d’inglese lo parlava, altri invece cercava di interloquire con i nuovi coinquilini a gesti. Alcuni razzisti usarono come scusante il fatto che non sapessero la loro lingua per sbatterli fuori di casa da lì a poco iniziò una guerra civile tra le forze armate e chi era contro l’ospitare gli alieni. Il mondo entro nel caos. {playername} continuo ad ospitare i suoi nuovi amici alieni ma venne scoperto e fu giustiziato.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Primitive0();
+                    break;
+            }
+
+
+        }
+        private void End2()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni non sembravano inizialmente ostili ma quando videro uno spettatore dello sbarco rilasciare una colomba attaccarono tutti i presenti i militari in quattro e quattr'otto li catturarono ci furono pochi feriti una decina di qui solo uno grave. Gli alieni vennero imprigionati per degli esperimenti e poi trasferiti in uno zoo. A {playername} e molti altri giovani ciò non stava bene era poi il 2030 avevano abolito gli animali veri dalli zoo da già dieci anni e quelli alieni cosa avevano di diverso? {playername} e un gruppo di attivisti creano un habitat apposito per quelle creature le portarono via dallo zoo e li portarono in quell’habitat artificiale sotto costante osservazione. Purtroppo {playername} venne arrestato ma a {pronomi[genderchoise]} non importava era felice che quelle creature fossero in un posto adatto a loro.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Primitive1();
+                    break;
+            }
+
+
+        }
+        private void End3()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni erano praticamente animali perciò i governi mondiali affidarono a biologi e botanici di creargli un habitat per poi lasciarli vivere controllati ma liberi in una riserva di 17000 ettari² {playername} fù molto content{ finalLetter[genderchoise]} di ciò.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Primitive1();
+                    break;
+            }
+
+
+        }
+        private void End4()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni subito fecero capire chi comandasse e sottomisero l’intera razza umana ma la migliorarono abolendo razzismo povertà e tutti i problemi di attualità ma alcuni come {playername} si opposero perché erano di fatto in una dittatura, senza problemi ma una dittatura. questi gruppi vennero mandati su un altro pianeta dove crearono società democratiche ma con problemi sociali, A voi l’ardua sentenza di capire chi ha trovato il modello di società migliore.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Primitive2();
+                    break;
+            }
+
+
+        }
+        private void End5()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni chiesero aiuto perché erano annoiati. Erano perfetti non dovevano più migliorare nulla gli che la loro esistenza avesse perso di significato quindi andavano in cerca di civiltà da aiutare. I nostri scienziati gli offrirono di aiutarli a sviluppare la loro tecnologia così gli alieni si trovarono un hobby potenzialmente infinito. Quindi gli alieni ci aiutarono a risolvere i problemi sociali e noi gli trovammo un nuovo hobby. Ma dopo un pò gli alieni si stufarono e distrussero la terra.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Primitive2();
+                    break;
+            }
+        }
+        //head finals
+        private void End6()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Quelli che ormai venivano considerati umani da trattati internazionali ci voltarono le spalle all’improvviso sterminarono  la maggior parte della popolazione invece {playername} è riucit{finalLetter[genderchoise]} con dei suoi amici a mimetizzarsi con gli alieni nella loro società. ";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu(); 
+                    break;
+                case 2:
+                    Haed0();
+                    break;
+            }
+        }
+        private void End7()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni sono venuti alla ricerca d’aiuto erano disperati un meteorite stava per distruggere il loro piante, Immediatamente si tenne un convegno internazionale per decidere della sorte degli alieni e dopo sette giorni si giunse alla conclusione che i terrestri avrebbero ospitato i migranti. Belle parole troppo belle per essere vere {playername} come tutti i cittadini possedenti una casa fù chiamat{finalLetter[genderchoise]} ad accogliere una famiglia di alieni, stavano imparando l’inglese dato che era uno dei parametri per essere ammessi sulla Terra. Per {playername} non è stato un problema dato che un po d’inglese lo parlava, altri invece cercava di interloquire con i nuovi coinquilini a gesti. Alcuni razzisti usarono come scusante il fatto che non sapessero la loro lingua per sbatterli fuori di casa da lì a poco iniziò una guerra civile tra le forze armate e chi era contro l’ospitare gli alieni. Il mondo entro nel caos. {playername} continuo ad ospitare i suoi nuovi amici alieni ma venne scoperto e fù giustiziato.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Haed0();
+                    break;
+            }
+        }
+        private void End8()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni volevano conquistarci e ce la fecero erano troppo avanzati rispetto a noi ma {playername} e molte altre persone andarono in piazza ad abbracciare i soldati alieni che ricoprirono pietà e compassione ed aiutarono gli umani a ricostruire ciò che avevano distrutto. ";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Haed1();
+                    break;
+            }
+        }
+        private void End9()
+        {
+            Clear();
+            string draw = @"Gli alieni volevano conquistarci e ce la fecero erano troppo avanzati rispetto a noi ma {player name} e molte altre persone andarono in piazza ad abbracciare i soldati alieni che ricoprirono pietà e compassione ed aiutarono gli umani a ricostruire ciò che avevano distrutto. ";
+            string prompt = $"";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Haed1();
+                    break;
+            }
+        }
+        private void End10()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"GLi alieni quando videro come abbiamo trattato il pianeta e i nostri pari ci distrussero considerando animali nemmeno persone come {playername} volontario di “Medici senza frontiere” furono risparmiate.";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                    Haed2();
+                    break;
+            }
+        }
+        private void End11()
+        {
+            Clear();
+            string draw = @"";
+            string prompt = $"Gli alieni vedendo come eravamo messi a livello sociale decisero di aiutarci a sconfiggere discriminazioni e povertà. Ma una volta aver risolto tutti i problemi la gente impazzì solo poche persone come {playername} orripilante dal comportamento della società scapparono insieme agli alieni. ";
+            string[] options = { "Uscire", "Rincominciare da capo", "Tornare indietro" };
+            menu SecondChoiseMenu = new menu(prompt, options, draw);
+            int selectedIndex = SecondChoiseMenu.Run();
+            switch (selectedIndex)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    RunMainMenu();
+                    break;
+                case 2:
+                      Haed2();
+                    break;
+            }
+        }
+    }
+}
